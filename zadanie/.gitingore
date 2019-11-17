@@ -1,0 +1,32 @@
+../.android/
+../.atom/
+../.bash_history
+../.cordova/
+../.dotnet/
+../.gi.swp
+../.gitconfig
+../.gitconfig.swp
+../.viminfo
+../.vscode/
+../3D Objects/
+../AppData/
+../Contacts/
+../Downloads/
+../Evernote/
+../Favorites/
+../IntelGraphicsProfiles/
+../Links/
+../MicrosoftEdgeBackups/
+../Music/
+../NTUSER.DAT
+../NTUSER.DAT{5159300b-7d90-11e9-b63a-3c9180b5b5fe}.TM.blf
+../NTUSER.DAT{5159300b-7d90-11e9-b63a-3c9180b5b5fe}.TMContainer00000000000000000001.regtrans-ms
+../NTUSER.DAT{5159300b-7d90-11e9-b63a-3c9180b5b5fe}.TMContainer00000000000000000002.regtrans-ms
+../OneDrive/
+../Saved Games/
+../Searches/
+../Videos/
+../ntuser.dat.LOG1
+../ntuser.dat.LOG2
+../ntuser.ini
+../source/
