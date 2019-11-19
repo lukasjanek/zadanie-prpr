@@ -12,7 +12,6 @@ void n();
 int main() //telo
 {
 	int znak;
-	printf("Stlac znak pre:\n n- nacitanie sifrovanej spravy\n v- vypis sifrovanej spravy\n u- uprava spravy\n s- vypis sifry\n d- vypis vsetkych slov x dlzky\n h histogram sifry\n c- cezarova sifra\n k- ukoncit program\n");
 	znak = getchar();
 	
 	switch (znak)
@@ -41,14 +40,15 @@ void n()
 {   
 	int povodnytext[max],pismeno,pocetznakov;
 	FILE *fr;
+	pocetznakov=0;
 	if ((fr = fopen("sifra.txt","r"))==NULL)
 	{
 		printf("Spravu sa nepodarilo nacitat\n");
 	}
-	for (pocetznakov=0; pocetznakov <=max; pocetznakov++)
+	while ((pismeno = getc(fr))!=EOF)
 	{
-		pismeno = getc(fr);
 		povodnytext[pocetznakov]=pismeno;
+		pocetznakov++;
 	}
 	fclose(fr);
 	if (fclose(fr)==EOF)
