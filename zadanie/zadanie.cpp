@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define max 999
+#define MAX 999
 void n();
-//void v();
+void v();
 //int u();
 //int s();
 //int d();
@@ -11,34 +11,35 @@ int k();
 
 int main() //telo
 {
-	int znak;
+	int znak, povodnytext[MAX],upravenytext[MAX];
 	znak = getchar();
-	
-	switch (znak)
+	while (getchar()!='k')
 	{
-		case 'n': n();
-			break;
-		/*case 'v': v();
-			break;
-		case 'u': u();
-			break;
-		case 's': s();
-			break;
-		case 'd': d();
-			break;
-		case 'h': h();
-			break;
-		case 'c': c();
-			break;*/
-		case 'k': k();
-			break; 
+		switch (znak)
+		{
+			case 'n': n();
+				break;
+			/*case 'v': v();
+				break;
+			case 'u': u();
+				break;
+			case 's': s();
+				break;
+			case 'd': d();
+				break;
+			case 'h': h();
+				break;
+			case 'c': c();
+				break;*/
+			case 'k': k();
+				break; 
+		}
 	}
 	return 0;
 }
-
 void n()
 {   
-	int povodnytext[max],pismeno,pocetznakov;
+	int povodnytext[MAX],pismeno,pocetznakov;
 	FILE *fr;
 	pocetznakov=0;
 	if ((fr = fopen("sifra.txt","r"))==NULL)
@@ -49,17 +50,18 @@ void n()
 	{
 		povodnytext[pocetznakov]=pismeno;
 		pismeno=getc(fr);
+		pocetznakov++;
 	}
 	fclose(fr);
-	if (fclose(fr)==EOF)
-	{
-		printf("Subor sa nepodarilo zatvorit\n");
-	}
+
 }
-/*void v()
+void v()
 {
-	if (n=)
-}*/
+	int charakter,pismeno;
+	charakter=0;
+	while (povodnytext[] !=EOF)
+		putchar('charakter');
+}
 int k()
 {
 	return 0;
