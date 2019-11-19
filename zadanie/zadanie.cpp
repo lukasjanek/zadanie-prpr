@@ -1,13 +1,13 @@
 #include <stdio.h>
 #define max 999
 void n();
-//int v();
+//void v();
 //int u();
 //int s();
 //int d();
 //int h();
 //int c();
-//int k();
+int k();
 
 int main() //telo
 {
@@ -29,9 +29,9 @@ int main() //telo
 		case 'h': h();
 			break;
 		case 'c': c();
-			break;
+			break;*/
 		case 'k': k();
-			break;*/ 
+			break; 
 	}
 	return 0;
 }
@@ -45,19 +45,25 @@ void n()
 	{
 		printf("Spravu sa nepodarilo nacitat\n");
 	}
-	while ((pismeno = getc(fr))!=EOF)
+	while (pismeno !=EOF)
 	{
 		povodnytext[pocetznakov]=pismeno;
-		pocetznakov++;
+		pismeno=getc(fr);
 	}
 	fclose(fr);
 	if (fclose(fr)==EOF)
 	{
-		printf("Subor sa nepodarilo zatvorit");
+		printf("Subor sa nepodarilo zatvorit\n");
 	}
 }
-
-
+/*void v()
+{
+	if (n=)
+}*/
+int k()
+{
+	return 0;
+}
 
 
 
