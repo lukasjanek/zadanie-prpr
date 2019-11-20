@@ -1,60 +1,49 @@
 #include <stdio.h>
-#include <string.h>
 #define MAX 999
-void n(char povodnytext[]);
-void v(char povodnytext[]);
-//int u();
-//int s();
-//int d();
-//int h();
-//int c();
-int k();
-
-void n(char povodnytext[])
-{   
-	int pismeno,pocetznakov;
-	FILE *fr;
-	pocetznakov=0;
-	if ((fr = fopen("sifra.txt","r"))==NULL)
+void n(int povodnytext[],int *dlzkasuboru) 
+{   	
+	FILE *fr;	
+	if ((fr = fopen("sifra.txt","r"))!=NULL)
+	{ 
+		int pismeno,pocetznakov;
+		pocetznakov=0;
+		while ((pismeno=getc(fr))!=EOF)
+		{
+			povodnytext[pocetznakov]=pismeno;
+			pocetznakov++;
+		}
+		*dlzkasuboru = pocetznakov;
+		if (fclose(fr)==EOF)
+		{
+			printf("Subor sa nepodarilo zatvorit\n");	
+		}
+	}
+	else
 	{
 		printf("Spravu sa nepodarilo nacitat\n");
 	}
-	while (pismeno !=EOF)
-	{
-		povodnytext[pocetznakov]=pismeno;
-		pismeno=getc(fr);
-		pocetznakov++;
-	}
-	fclose(fr);
-
+	
 }
-void v(char povodnytext[])
+void v(int povodnytext[], int dlzkasuboru)
 {
-	int obsah,iteracia;
-	obsah=0;
-	for (iteracia=0;iteracia<MAX;iteracia++)
+	int iteracia;
+	for (iteracia=0;iteracia< dlzkasuboru;iteracia++)
 	{
-		obsah = povodnytext[iteracia];
-		putchar(obsah);
+		printf("%c\n",povodnytext[iteracia]);
 	}
-}
-int k()
-{
-	return 0;
 }
 
 int main() //telo
 {
-	int znak; 
-	char povodnytext[MAX],upravenytext[MAX];
-	znak = getchar();
-	while (getchar()!='k')
+	int znak, dlzkasuboru=MAX; 
+	int povodnytext[MAX],upravenytext[MAX];
+	while ((znak =getchar()) !='k')
 	{
 		switch (znak)
 		{
-			case 'n': n(povodnytext);
+			case 'n': n(povodnytext, &dlzkasuboru);
 				break;
-			case 'v': v(povodnytext);
+			case 'v': v(povodnytext, dlzkasuboru);
 				break;
 			/*case 'u': u();
 				break;
@@ -66,8 +55,7 @@ int main() //telo
 				break;
 			case 'c': c();
 				break;*/
-			case 'k': k();
-				break; 
+			case 'k':  return 0;
 		}
 	}
 	return 0;
