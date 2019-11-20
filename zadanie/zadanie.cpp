@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #define MAX 999
-void n();
-void v(int);
+void n(char povodnytext[]);
+void v(char povodnytext[]);
 //int u();
 //int s();
 //int d();
@@ -10,9 +10,9 @@ void v(int);
 //int c();
 int k();
 
-void n()
+void n(char povodnytext[])
 {   
-	int povodnytext[MAX],pismeno,pocetznakov;
+	int pismeno,pocetznakov;
 	FILE *fr;
 	pocetznakov=0;
 	if ((fr = fopen("sifra.txt","r"))==NULL)
@@ -28,12 +28,13 @@ void n()
 	fclose(fr);
 
 }
-void v(int povodnytext[MAX])
+void v(char povodnytext[])
 {
-	int obsah;
+	int obsah,iteracia;
 	obsah=0;
-	while (povodnytext[obsah] !=EOF)
+	for (iteracia=0;iteracia<MAX;iteracia++)
 	{
+		obsah = povodnytext[iteracia];
 		putchar(obsah);
 	}
 }
@@ -44,15 +45,16 @@ int k()
 
 int main() //telo
 {
-	int znak, povodnytext[MAX],upravenytext[MAX];
+	int znak; 
+	char povodnytext[MAX],upravenytext[MAX];
 	znak = getchar();
 	while (getchar()!='k')
 	{
 		switch (znak)
 		{
-			case 'n': n();
+			case 'n': n(povodnytext);
 				break;
-			case 'v': v(int);
+			case 'v': v(povodnytext);
 				break;
 			/*case 'u': u();
 				break;
