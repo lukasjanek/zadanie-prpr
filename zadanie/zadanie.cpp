@@ -2,7 +2,7 @@
 #include <string.h>
 #define MAX 999
 void n();
-void v();
+void v(int);
 //int u();
 //int s();
 //int d();
@@ -28,7 +28,7 @@ void n()
 	fclose(fr);
 
 }
-void v()
+void v(int povodnytext[MAX])
 {
 	int obsah;
 	obsah=0;
@@ -41,6 +41,7 @@ int k()
 {
 	return 0;
 }
+
 int main() //telo
 {
 	int znak, povodnytext[MAX],upravenytext[MAX];
@@ -51,7 +52,7 @@ int main() //telo
 		{
 			case 'n': n();
 				break;
-			case 'v':v();
+			case 'v': v(int);
 				break;
 			/*case 'u': u();
 				break;
