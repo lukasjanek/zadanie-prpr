@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #define MAX 999
 void n(int povodnytext[],int *dlzkasuboru) 
 {   	
@@ -29,8 +30,22 @@ void v(int povodnytext[], int dlzkasuboru)
 	int iteracia;
 	for (iteracia=0;iteracia< dlzkasuboru;iteracia++)
 	{
-		printf("%c\n",povodnytext[iteracia]);
+		printf("%c",povodnytext[iteracia]);
 	}
+}
+void u(int povodnytext[],int upravenytext[],int dlzkasuboru)
+{
+	int iteracia,i=0;
+	if ((dlzkasuboru < '0') && (dlzkasuboru > '9'))
+	{
+	for(iteracia=0; iteracia=dlzkasuboru;iteracia++)
+	{
+			toupper(povodnytext[iteracia]);
+			povodnytext[iteracia]=upravenytext[i];
+			iteracia++;
+	}
+
+}
 }
 
 int main() //telo
