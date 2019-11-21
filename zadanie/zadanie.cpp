@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 #define MAX 999
 void n(int povodnytext[],int *dlzkasuboru) 
 {   	
@@ -36,8 +35,8 @@ void v(int povodnytext[], int dlzkasuboru)
 }
 void u(int povodnytext[],int upravenytext[],int dlzkasuboru,int *velkepismena)
 {
-	int velke, pismeno, upravenypocetznakov, pocetznakov;
-	upravenypocetznakov=0;
+	int velke, pismeno, pocetznakov;
+	int upravenypocetznakov=0;
 
 	for(pocetznakov=0; pocetznakov<=dlzkasuboru; pocetznakov++)
 	{	
@@ -59,7 +58,6 @@ void u(int povodnytext[],int upravenytext[],int dlzkasuboru,int *velkepismena)
 	
 		}
 	*velkepismena=velke;
-	upravenypocetznakov-10;
 }
 void s(int upravenytext[], int velkepismena)
 {
@@ -72,17 +70,42 @@ void s(int upravenytext[], int velkepismena)
 }
 void d(int povodnytext[], int dlzkasuboru)
 {
-	int dlzkaslova=0, ;
+	int dlzkaslova,drzac=0,pocetznakov,zaciatok=0,medzera=0;
 	scanf("%d",&dlzkaslova);
 	if (dlzkaslova >=1 && dlzkaslova <= 100)
 	{
 		
-		for (pocetznakov = 0; pocetznakov <= dlzkasuboru; pocetznakov++;)
+		for (pocetznakov = 0; pocetznakov < dlzkasuboru; pocetznakov++)
 		{
-			if ()
+			if (povodnytext[pocetznakov] != ' ')
+			{
+				drzac++;
+			}
+			if (povodnytext[pocetznakov] == ' ')
+			{
+				if (drzac == dlzkaslova)
+				{
+					while(zaciatok < drzac + medzera)
+					{
+					printf("%c",povodnytext[zaciatok]);
+          			zaciatok++;
+          			}
+          			putchar('\n');
+          			zaciatok = pocetznakov+1;
+          			medzera = zaciatok;
+          			drzac=0;	
+				}
+				else
+				{
+					zaciatok=pocetznakov+1;
+					medzera = zaciatok;
+					drzac = 0;
+				}
+			}
 		}
 	}
 }
+
 
 int main() //telo
 {
@@ -100,9 +123,9 @@ int main() //telo
 				break;
 			case 's': s(upravenytext, velkepismena);
 				break;
-			/*case 'd': d();
+			case 'd': d(povodnytext, dlzkasuboru);
 				break;
-			case 'h': h();
+			/*case 'h': h();
 				break;
 			case 'c': c();
 				break;*/
