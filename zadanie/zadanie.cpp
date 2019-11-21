@@ -32,32 +32,48 @@ void v(int povodnytext[], int dlzkasuboru)
 	{
 		printf("%c",povodnytext[iteracia]);
 	}
+	putchar('\n');
 }
-void u(int povodnytext[],int upravenytext[],int dlzkasuboru)
+void u(int povodnytext[],int upravenytext[],int dlzkasuboru,int *velkepismena)
 {
-	int iteracia=0,velke,pocetznakov;
-	if ((dlzkasuboru >= 'a') || (dlzkasuboru <= 'z') || (dlzkasuboru >= 'A')||(dlzkasuboru <= 'Z'))
-	{
-	for(iteracia=0; iteracia=dlzkasuboru;iteracia++)
-	{
-			if((dlzkasuboru >= 'a') || (dlzkasuboru <= 'z'))
-			{
-				velke=dlzkasuboru;
-				upravenytext[pocetznakov]=velke;
-			}
-			else 
-			{
-				upravenytext[pocetznakov]=povodnytext[pocetznakov];
-			}
-			velke++;
-	}
+	int velke, pismeno, upravenypocetznakov, pocetznakov;
+	upravenypocetznakov=0;
 
+	for(pocetznakov=0; pocetznakov<=dlzkasuboru; pocetznakov++)
+	{	
+		
+		pismeno = povodnytext[pocetznakov];
+		if ((pismeno >= 'a' && pismeno <= 'z') || (pismeno >= 'A' && pismeno <= 'Z'))
+		{
+				if(pismeno >= 'a' && pismeno <= 'z')
+				{
+					velke = pismeno-32;
+					upravenytext[upravenypocetznakov] = velke;
+				}
+				else 
+				{
+					upravenytext[upravenypocetznakov] = povodnytext[pocetznakov];
+				}
+				upravenypocetznakov++;
+		}
+	
+		}
+	*velkepismena=velke;
+	upravenypocetznakov-10;
 }
+void s(int upravenytext[], int velkepismena)
+{
+	int pocetznakov;
+	for (pocetznakov=0;pocetznakov<=velkepismena;pocetznakov++)
+	{
+		printf("%c",upravenytext[pocetznakov]);
+	}
+	putchar('\n'); 	
 }
 
 int main() //telo
 {
-	int znak, dlzkasuboru=MAX; 
+	int znak, dlzkasuboru=MAX,velkepismena=MAX; 
 	int povodnytext[MAX],upravenytext[MAX];
 	while ((znak =getchar()) !='k')
 	{
@@ -67,11 +83,11 @@ int main() //telo
 				break;
 			case 'v': v(povodnytext, dlzkasuboru);
 				break;
-			case 'u': u(povodnytext,upravenytext,dlzkasuboru);
+			case 'u': u(povodnytext,upravenytext,dlzkasuboru, &velkepismena);
 				break;
-			/*case 's': s();
+			case 's': s(upravenytext, velkepismena);
 				break;
-			case 'd': d();
+			/*case 'd': d();
 				break;
 			case 'h': h();
 				break;
