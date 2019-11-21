@@ -70,6 +70,19 @@ void s(int upravenytext[], int velkepismena)
 	}
 	putchar('\n'); 	
 }
+void d(int povodnytext[], int dlzkasuboru)
+{
+	int dlzkaslova=0, ;
+	scanf("%d",&dlzkaslova);
+	if (dlzkaslova >=1 && dlzkaslova <= 100)
+	{
+		
+		for (pocetznakov = 0; pocetznakov <= dlzkasuboru; pocetznakov++;)
+		{
+			if ()
+		}
+	}
+}
 
 int main() //telo
 {
