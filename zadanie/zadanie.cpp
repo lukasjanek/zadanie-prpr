@@ -35,14 +35,21 @@ void v(int povodnytext[], int dlzkasuboru)
 }
 void u(int povodnytext[],int upravenytext[],int dlzkasuboru)
 {
-	int iteracia,i=0;
-	if ((dlzkasuboru < '0') && (dlzkasuboru > '9'))
+	int iteracia=0,velke,pocetznakov;
+	if ((dlzkasuboru >= 'a') || (dlzkasuboru <= 'z') || (dlzkasuboru >= 'A')||(dlzkasuboru <= 'Z'))
 	{
 	for(iteracia=0; iteracia=dlzkasuboru;iteracia++)
 	{
-			toupper(povodnytext[iteracia]);
-			povodnytext[iteracia]=upravenytext[i];
-			iteracia++;
+			if((dlzkasuboru >= 'a') || (dlzkasuboru <= 'z'))
+			{
+				velke=dlzkasuboru;
+				upravenytext[pocetznakov]=velke;
+			}
+			else 
+			{
+				upravenytext[pocetznakov]=povodnytext[pocetznakov];
+			}
+			velke++;
 	}
 
 }
@@ -60,9 +67,9 @@ int main() //telo
 				break;
 			case 'v': v(povodnytext, dlzkasuboru);
 				break;
-			/*case 'u': u();
+			case 'u': u(povodnytext,upravenytext,dlzkasuboru);
 				break;
-			case 's': s();
+			/*case 's': s();
 				break;
 			case 'd': d();
 				break;
