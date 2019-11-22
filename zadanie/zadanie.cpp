@@ -108,18 +108,22 @@ void d(int povodnytext[], int dlzkasuboru)
 }
 void h(int upravenytext[], int velkepismena)
 {
-	int histogram[ABECEDA], zaciatok, znak, pismeno, tridsatpercentaViac, tridsatpercent, desatpercent, raz;
-	for (zaciatok=0; zaciatok<ABECEDA; zaciatok++) 
-      histogram[zaciatok] = 0;
+	int histogram[ABECEDA], zaciatok, znak, pismeno, tridsatpercentaViac, tridsatpercent, dvadsatpercent, desatpercent, raz;
+	for (zaciatok=0; zaciatok<ABECEDA; zaciatok++)
+	{
+	  histogram[zaciatok] = 0;
+	}
     for (znak = 0; znak < velkepismena; znak++) 
 	{
       	if((upravenytext[znak] >= 'A') && (upravenytext[znak] <= 'Z'))
-		histogram[znak - 'A']++;
+      	{
+			histogram[upravenytext[znak] - 'A']++;
+		}
 	}
 	pismeno = 100 / velkepismena;
 	for (tridsatpercentaViac = 0; tridsatpercentaViac < ABECEDA; tridsatpercentaViac++)
 	{
-		if ((histogram[tridsatpercentaViac])*pismeno > 30) //ak sa pismeno nachadza viac ako 30% v poli
+		if (((histogram[tridsatpercentaViac])*pismeno) > 30) //ak sa pismeno nachadza viac ako 30% v poli
 		{
 			putchar('*');
 		}
@@ -131,7 +135,19 @@ void h(int upravenytext[], int velkepismena)
 	putchar('\n');
 	for (tridsatpercent = 0; tridsatpercent < ABECEDA; tridsatpercent++)
 	{
-		if ((histogram[tridsatpercent])*pismeno > 20) //ak sa pismeno nachadza do 30%
+		if (((histogram[tridsatpercent])*pismeno) > 20) //ak sa pismeno nachadza do 30%
+		{
+			putchar('*');
+		}
+		else
+		{
+			putchar(' ');
+	 }	
+	}
+	putchar('\n');
+	for (dvadsatpercent = 0; dvadsatpercent < ABECEDA; dvadsatpercent++)
+	{
+		if (((histogram[dvadsatpercent])*pismeno) > 10) //ak sa pismeno nachadza do 20%
 		{
 			putchar('*');
 		}
@@ -139,11 +155,11 @@ void h(int upravenytext[], int velkepismena)
 		{
 			putchar(' ');
 		}
-		putchar('\n');
 	}
+	putchar('\n');
 	for (desatpercent = 0; desatpercent < ABECEDA; desatpercent++)
 	{
-		if ((histogram[desatpercent])*pismeno > 0) //ak sa pismeno nachadza do 10%
+		if (((histogram[desatpercent])*pismeno) > 0) //ak sa pismeno nachadza do 10%
 		{
 			putchar('*');
 		}
@@ -151,10 +167,12 @@ void h(int upravenytext[], int velkepismena)
 		{
 			putchar(' ');
 		}
-		putchar('\n');
 	}
+	putchar('\n');
 	for (raz = 0; raz < ABECEDA; raz++)
+	{
 	putchar('A'+ raz); //ak sa to nachadza raz
+	}
 	putchar ('\n');
 }
 void c(int upravenytext[])
