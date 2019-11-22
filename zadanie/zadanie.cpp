@@ -44,7 +44,7 @@ void u(int povodnytext[],int upravenytext[],int dlzkasuboru,int *velkepismena)
 		
 		pismeno = povodnytext[pocetznakov];
 		if ((pismeno >= 'a' && pismeno <= 'z') || (pismeno >= 'A' && pismeno <= 'Z'))
-		{
+		{				
 				if(pismeno >= 'a' && pismeno <= 'z')
 				{
 					velke = pismeno-32;
@@ -200,7 +200,7 @@ void c(int upravenytext[], int velkepismena)
 int main() //telo
 {
 	int znak, dlzkasuboru=MAX,velkepismena=MAX; 
-	int povodnytext[MAX],upravenytext[MAX];
+	int povodnytext[MAX]={0},upravenytext[MAX]={0};
 	while ((znak =getchar()) !='k')
 	{
 		switch (znak)
