@@ -106,17 +106,70 @@ void d(int povodnytext[], int dlzkasuboru)
 		}
 	}
 }
-void h(int upravenytext[])
+void h(int upravenytext[], int velkepismena)
 {
-	int upravenypocetznakov,histogram[upravenypocetznakov],i,j;
-	
-		for(i=0; i<ABECEDA; i++) 
-	      printf("%c",i);
-	
-	   	for (upravenypocetznakov=0; upravenypocetznakov<histogram[upravenypocetznakov]; upravenypocetznakov++)
-		{  
-	         printf("%c: %2d\n", 'A' + ABECEDA, upravenytext[upravenypocetznakov]);
+	int histogram[ABECEDA], zaciatok, znak, pismeno, tridsatpercentaViac, tridsatpercent, desatpercent, raz;
+	for (zaciatok=0; zaciatok<ABECEDA; zaciatok++) 
+      histogram[zaciatok] = 0;
+    for (znak = 0; znak < velkepismena; znak++) 
+	{
+      	if((upravenytext[znak] >= 'A') && (upravenytext[znak] <= 'Z'))
+		histogram[znak - 'A']++;
+	}
+	pismeno = 100 / velkepismena;
+	for (tridsatpercentaViac = 0; tridsatpercentaViac < ABECEDA; tridsatpercentaViac++)
+	{
+		if ((histogram[tridsatpercentaViac])*pismeno > 30) //ak sa pismeno nachadza viac ako 30% v poli
+		{
+			putchar('*');
 		}
+		else
+		{
+			putchar(' ');
+		}
+	}
+	putchar('\n');
+	for (tridsatpercent = 0; tridsatpercent < ABECEDA; tridsatpercent++)
+	{
+		if ((histogram[tridsatpercent])*pismeno > 20) //ak sa pismeno nachadza do 30%
+		{
+			putchar('*');
+		}
+		else
+		{
+			putchar(' ');
+		}
+		putchar('\n');
+	}
+	for (desatpercent = 0; desatpercent < ABECEDA; desatpercent++)
+	{
+		if ((histogram[desatpercent])*pismeno > 0) //ak sa pismeno nachadza do 10%
+		{
+			putchar('*');
+		}
+		else
+		{
+			putchar(' ');
+		}
+		putchar('\n');
+	}
+	for (raz = 0; raz < ABECEDA; raz++)
+	putchar('A'+ raz); //ak sa to nachadza raz
+	putchar ('\n');
+}
+void c(int upravenytext[])
+{
+	int iteracia,posun,upravenypocetznakov,sifra=0;
+	scanf("%d", &posun);
+	if ((posun >= 1) && (posun <=25))
+	{
+		for (iteracia=0;iteracia<upravenypocetznakov;iteracia++)
+		{
+			sifra = upravenypocetznakov - posun;
+			printf("%c\n",sifra);
+			iteracia++;			
+		}
+	}
 }
 int main() //telo
 {
@@ -136,10 +189,10 @@ int main() //telo
 				break;
 			case 'd': d(povodnytext, dlzkasuboru);
 				break;
-			case 'h': h(upravenytext);
+			case 'h': h(upravenytext,velkepismena);
 				break;
-			/*case 'c': c();
-				break;*/
+			case 'c': c(upravenytext);
+				break;
 			case 'k':  return 0;
 		}
 	}
