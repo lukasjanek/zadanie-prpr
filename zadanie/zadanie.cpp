@@ -57,8 +57,8 @@ void u(int povodnytext[],int upravenytext[],int dlzkasuboru,int *velkepismena)
 				upravenypocetznakov++;
 		}
 	
-		}
-	*velkepismena=velke;
+	}
+	*velkepismena=upravenypocetznakov;
 }
 void s(int upravenytext[], int velkepismena)
 {
@@ -177,7 +177,7 @@ void h(int upravenytext[], int velkepismena)
 }
 void c(int upravenytext[], int velkepismena)
 {
-	int iteracia,posun,sifra,cezarka;
+	int iteracia,posun,sifra,cezarka,velke;
 	scanf("%d", &posun);
 	if ((posun >= 1) && (posun <=25))
 	{
@@ -186,7 +186,7 @@ void c(int upravenytext[], int velkepismena)
 			sifra = upravenytext[iteracia] - posun;
 			if (sifra < 'A')
 			{
-				cezarka = sifra + 'A';
+				cezarka = sifra + 32;
 				printf("%c",cezarka);
 			}
 			else 
