@@ -67,7 +67,7 @@ void s(int upravenytext[], int velkepismena)
 	{
 		printf("%c",upravenytext[pocetznakov]);
 	}
-	putchar('\n'); 	
+	putchar('\n');	
 }
 void d(int povodnytext[], int dlzkasuboru)
 {
@@ -175,18 +175,26 @@ void h(int upravenytext[], int velkepismena)
 	}
 	putchar ('\n');
 }
-void c(int upravenytext[])
+void c(int upravenytext[], int velkepismena)
 {
-	int iteracia,posun,upravenypocetznakov,sifra=0;
+	int iteracia,posun,sifra,cezarka;
 	scanf("%d", &posun);
 	if ((posun >= 1) && (posun <=25))
 	{
-		for (iteracia=0;iteracia<upravenypocetznakov;iteracia++)
+		for (iteracia=0; iteracia < velkepismena; iteracia++)
 		{
-			sifra = upravenypocetznakov - posun;
-			printf("%c\n",sifra);
-			iteracia++;			
+			sifra = upravenytext[iteracia] - posun;
+			if (sifra < 'A')
+			{
+				cezarka = sifra + 'A';
+				printf("%c",cezarka);
+			}
+			else 
+			{
+				printf("%c",sifra);	
+			}	
 		}
+		putchar('\n');
 	}
 }
 int main() //telo
@@ -209,7 +217,7 @@ int main() //telo
 				break;
 			case 'h': h(upravenytext,velkepismena);
 				break;
-			case 'c': c(upravenytext);
+			case 'c': c(upravenytext, velkepismena);
 				break;
 			case 'k':  return 0;
 		}
