@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define MAX 999
+#define ABECEDA 'Z' - 'A' + 1
 void n(int povodnytext[],int *dlzkasuboru) 
 {   	
 	FILE *fr;	
@@ -105,8 +106,18 @@ void d(int povodnytext[], int dlzkasuboru)
 		}
 	}
 }
-
-
+void h(int upravenytext[])
+{
+	int upravenypocetznakov,histogram[upravenypocetznakov],i,j;
+	
+		for(i=0; i<ABECEDA; i++) 
+	      printf("%c",i);
+	
+	   	for (upravenypocetznakov=0; upravenypocetznakov<histogram[upravenypocetznakov]; upravenypocetznakov++)
+		{  
+	         printf("%c: %2d\n", 'A' + ABECEDA, upravenytext[upravenypocetznakov]);
+		}
+}
 int main() //telo
 {
 	int znak, dlzkasuboru=MAX,velkepismena=MAX; 
@@ -125,9 +136,9 @@ int main() //telo
 				break;
 			case 'd': d(povodnytext, dlzkasuboru);
 				break;
-			/*case 'h': h();
+			case 'h': h(upravenytext);
 				break;
-			case 'c': c();
+			/*case 'c': c();
 				break;*/
 			case 'k':  return 0;
 		}
